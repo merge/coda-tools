@@ -33,6 +33,7 @@ static int imx6_read(struct cleaner *cleaner, char *path,
 
 	fp = fopen(path, "rb");
 	if (!fp) {
+		fprintf(stderr, "opening %s failed.\n", path);
 		perror("fopen");
 		return errno;
 	}
