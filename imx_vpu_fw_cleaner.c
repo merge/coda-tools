@@ -146,7 +146,7 @@ int main (int argc, char **argv)
 	/* remove everything after decode_vc1 starts */
 	memset(buf + CODA_FW_START_DEC_VC1, 0, CODA_FW_SIZE - CODA_FW_START_DEC_VC1);
 
-	write_ptr = fopen("test.bin","wb");
+	write_ptr = fopen(outpath,"wb");
 	if (!write_ptr) {
 		perror("fopen");
 		return errno;
