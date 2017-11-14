@@ -1,4 +1,5 @@
 imx_vpu_fw_cleaner
+/*.bin
 
 # Prerequisites
 *.d
