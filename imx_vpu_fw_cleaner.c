@@ -143,6 +143,8 @@ int main (int argc, char **argv)
 		return -EINVAL;
 	}
 
+	if (cleaner->verbose)
+		printf("remove everything except h264 decoding\n");
 	/* remove everything after decode_vc1 starts */
 	memset(buf + CODA_FW_START_DEC_VC1, 0, CODA_FW_SIZE - CODA_FW_START_DEC_VC1);
 
@@ -155,6 +157,9 @@ int main (int argc, char **argv)
 	ret = fwrite(buf, len, 1, write_ptr);
 	if (ret != 1)
 		fprintf(stderr, "ERROR: %d bytes written\n", ret);
+
+	if (cleaner->verbose)
+		printf("%s written\n", outpath);
 
 	fclose(write_ptr);
 	free(buf);
