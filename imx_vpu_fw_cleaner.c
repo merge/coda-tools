@@ -13,8 +13,8 @@
 #include <asm/types.h>
 #include <limits.h>
 
-static const char defpath[] = "upstream/vpu_fw_imx6q.bin";
-static const char defoutpath[] = "upstream/vpu_fw_imx6q_clean.bin";
+static const char defpath[] = "vpu_fw_imx6q.bin";
+static const char defoutpath[] = "vpu_fw_imx6q_clean.bin";
 
 struct cleaner {
 	int	verbose;
