@@ -13,6 +13,9 @@
 #include <asm/types.h>
 #include <limits.h>
 
+#define CODA_FW_SIZE		0x3e000
+#define CODA_FW_START_DEC_VC1	0x0f000
+
 static const char defpath[] = "vpu_fw_imx6q.bin";
 static const char defoutpath[] = "vpu_fw_imx6q_clean.bin";
 
@@ -76,6 +79,7 @@ int main (int argc, char **argv)
 	uint8_t *buf = NULL;
 	uint32_t len;
 	int opt;
+	FILE *write_ptr;
 
 	cleaner = calloc(1, sizeof(struct cleaner));
 	if (!cleaner)
@@ -130,8 +134,20 @@ int main (int argc, char **argv)
 	if (!buf)
 		return -ENOMEM;
 
-	/* TODO clean buf of size len */
+	/* remove everything after decode_vc1 starts */
+	memset(buf + CODA_FW_START_DEC_VC1, 0, CODA_FW_SIZE - CODA_FW_START_DEC_VC1);
 
+	write_ptr = fopen("test.bin","wb");
+	if (!write_ptr) {
+		perror("fopen");
+		return errno;
+	}
+
+	ret = fwrite(buf, len, 1, write_ptr);
+	if (ret != 1)
+		fprintf(stderr, "ERROR: %d bytes written\n", ret);
+
+	fclose(write_ptr);
 	free(buf);
 	free(path);
 	free(outpath);
