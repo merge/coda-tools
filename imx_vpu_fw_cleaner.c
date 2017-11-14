@@ -134,6 +134,15 @@ int main (int argc, char **argv)
 	if (!buf)
 		return -ENOMEM;
 
+	if (len != CODA_FW_SIZE) {
+		fprintf(stderr, "ERROR: unsupported firmware file\n");
+		free(buf);
+		free(path);
+		free(outpath);
+		free(cleaner);
+		return -EINVAL;
+	}
+
 	/* remove everything after decode_vc1 starts */
 	memset(buf + CODA_FW_START_DEC_VC1, 0, CODA_FW_SIZE - CODA_FW_START_DEC_VC1);
 
