@@ -1,4 +1,5 @@
-imx_vpu_fw_cleaner
+/coda-fwinfo/coda-fwinfo
+/coda-fw-cleaner/coda-fw-cleaner
 /*.bin
 
 # Prerequisites
