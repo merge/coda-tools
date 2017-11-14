@@ -1,6 +1,9 @@
 # coda-tools
 tools to play with i.MX VPU firmware binaries
 
+These tools are in a very early development phase and do ***not***
+behave like they should. Please don't use them!
+
 ## imx_vpu_fw_cleaner
 This tool removes (overwrites with zero) parts of the binary firmware
 file.
@@ -13,9 +16,6 @@ VP8 is a free video encoding / decoding standard. There are no license
 consideration whatsoever connected to it. For other codecs one has to
 become a licensee of various patent holders in order to be allowed to
 play videos for customers.
-
-It is great to have an alternative to patented technologies and it's
-therefore often the preferred.
 
 For video playback (and encoding) on i.MX platforms, binary firmware
 images are needed, to be run on the included BIT digital signals
